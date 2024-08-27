@@ -18,6 +18,7 @@ services:
       - '3000:3000'
     volumes:
       - .:/docker/app # add our local code to dockerfile
+      - ./config:/rails/config
     depends_on:
       - db  # add all dependant container
 

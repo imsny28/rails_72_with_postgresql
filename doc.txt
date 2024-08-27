@@ -180,3 +180,9 @@ ARG DEFAULT_PORT 3000
 EXPOSE ${DEFAULT_PORT}
 
 CMD [ "bundle","exec", "puma", "config.ru"]
+
+
+openssl rand -hex 24 | cut -c1-32
+Add in master.key
+docker-compose run --rm rails bin/rails credentials:edit
+docker-compose run --user root rails sh -c "touch config/master.key && chmod 600 config/master.key && chown rails:rails config/master.key && bin/rails credentials:edit"
